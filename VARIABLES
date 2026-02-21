@@ -1,0 +1,62 @@
+//Writing a program by assuming two students of different age got same marks in same college reflecting Local, Instance & Static Variables.//
+
+
+
+class VariableTypes { 
+ 
+    // ------------------------------- 
+    // STATIC VARIABLE 
+    // ------------------------------- 
+    // Belongs to the class 
+    // Only ONE copy is shared by all objects 
+    static String collegeName = "AVANTHI"; 
+ 
+    // ------------------------------- 
+    // INSTANCE VARIABLE 
+    // ------------------------------- 
+    // Each object gets its own copy 
+    int age; 
+ 
+    // Constructor to initialize instance variable 
+    VariableTypes(int a) 
+/*(int a)  = (PARAMETERS).  
+Arguments are passing to Parameters*/  
+ { 
+        age = a; 
+    } 
+ 
+    // ------------------------------- 
+    // METHOD WITH LOCAL VARIABLE 
+    // ------------------------------- 
+    void display() { 
+ 
+        // Local variable (exists only inside this method) 
+        int marks = 85; 
+ 
+        System.out.println("Age: " + age);               // instance variable 
+        System.out.println("Marks: " + marks);           // local variable 
+        System.out.println("College: " + collegeName);   // static variable 
+    } 
+ 
+    // ------------------------------- 
+    // MAIN METHOD 
+    // ------------------------------- 
+    public static void main(String[] args) { 
+ 
+        // Object creation 
+        VariableTypes s1 = new VariableTypes(20);//(ARGUMENTS) 
+        VariableTypes s2 = new VariableTypes(22); 
+ 
+        // Calling method 
+        s1.display(); 
+} 
+} 
+System.out.println("----"); 
+s2.display(); 
+/* OUTPUT (Step-by-Step) 
+Age: 20 
+Marks: 85 
+College: AVIH ---- 
+Age: 22 
+Marks: 85 
+College: AVIH*/
