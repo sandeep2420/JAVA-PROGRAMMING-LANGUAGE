@@ -1,0 +1,88 @@
+Writing a program that performs Control Statements such as BOOLEAN WITH IF-ELSE using Primitive and REFERENCE DATA TYPEs
+
+
+
+
+class Variables { 
+ 
+    public static void main(String[] args) { 
+ 
+        // ------------------------------------ 
+        // PRIMITIVE DATA TYPES 
+        // ------------------------------------ 
+ 
+        // int stores whole numbers 
+        int age = 40; 
+        int year = 2026; 
+        int quantity = 1; 
+ 
+        System.out.println("The person's age is: " + age); 
+        System.out.println("best year is: " + year); 
+        System.out.println("What is the Rank he got: " + quantity); 
+ 
+        // double stores decimal numbers 
+        double price = 1153400; 
+        double gpa = 3.5; 
+        double temperature = -12.5; 
+ 
+        // char stores a single character (inside single quotes) 
+        char grade = 'A'; 
+        char symbol = '!'; 
+ 
+ 
+        // boolean stores only true or false 
+        boolean isStudent = true; 
+        boolean forSale = true;//f 
+        boolean isOnline = true; 
+ 
+        // ------------------------------------ 
+        // REFERENCE DATA TYPE (String) 
+        // ------------------------------------ 
+ 
+        // String stores text (sequence of characters) 
+        String name = "Raju"; 
+        String food = "Chicken Biryani"; 
+        String email = "raju123@gmail.com"; 
+        String car = "BMW"; 
+        String color = "red"; 
+        String currency = "$"; 
+ 
+        // ------------------------------------ 
+        // OUTPUT USING CONCATENATION 
+        // ------------------------------------ 
+ 
+        System.out.println("Name: " + name); 
+        System.out.println("Favorite food: " + food); 
+        System.out.println("Email: " + email); 
+ 
+        // Combining String + int + String 
+        System.out.println("Your choice is a " + color + " " + year + " " + car); 
+ 
+        // Combining char + double 
+        System.out.println("The price is: " + currency + price); 
+ 
+        // ------------------------------------ 
+        // BOOLEAN WITH IF-ELSE (DECISION MAKING) 
+        // ------------------------------------ 
+ 
+        // Check student status 
+        if (isStudent) { 
+            System.out.println("You are a student!"); 
+        } else { 
+            System.out.println("You are NOT a student!"); 
+        } 
+ 
+        // Check sale status 
+        if (forSale) { 
+            System.out.println("There is a " + car + " for sale"); 
+        } else { 
+            System.out.println("The " + car + " is not for sale"); 
+        } 
+ 
+        // ------------------------------------ 
+        // FINAL MESSAGE 
+        // ------------------------------------ 
+ 
+        System.out.println("Program executed successfully!"); 
+    } 
+} 
