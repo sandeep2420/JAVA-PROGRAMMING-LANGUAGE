@@ -1,0 +1,34 @@
+Writing a program that Prints Multiplication Table Up To 30 at user choice runtime input.
+
+import java.util.Scanner;   // Import Scanner class for runtime input 
+ 
+class MultiplicationTable { 
+ 
+    public static void main(String[] args) { 
+ 
+        // Step 1: Create Scanner object to read input from keyboard 
+        Scanner scan = new Scanner(System.in); 
+ 
+        // Step 2: Ask the user to enter a number 
+        System.out.print("Enter a number to print its multiplication table: "); 
+ 
+        // Step 3: Read the integer entered by the user 
+        int num = scan.nextInt(); 
+ 
+        // Step 4: Print a heading for the multiplication table 
+        System.out.println("\nMultiplication Table for " + num); 
+        System.out.println("--------------------------------"); 
+ 
+        // Step 5: Loop from 1 to 30 
+        // 'i' represents the multiplier 
+        for (int i = 1; i <= 30; i++) { 
+ 
+            // Step 6: Print multiplication in the format: 
+            // number * multiplier = result 
+            System.out.println(num + " * " + i + " = " + (num * i)); 
+        } 
+ 
+        // Step 7: Close the Scanner object (good programming practice) 
+        scan.close(); 
+    } 
+} 
