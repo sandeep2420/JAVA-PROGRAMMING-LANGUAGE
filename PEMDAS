@@ -1,0 +1,49 @@
+Writing a program that solves "n + 10 * 2 - (n / 2)" by PEMDAS  at Runtime Input.
+
+
+import java.util.Scanner;   // Import Scanner class for runtime input 
+ 
+class PEMDAS { 
+ 
+    public static void main(String[] args) { 
+ 
+        // Step 1: Create Scanner object to read input from keyboard 
+        Scanner scan = new Scanner(System.in); 
+ 
+        // Step 2: Ask the user to enter a number 
+        System.out.print("Enter an integer number: "); 
+ 
+        // Step 3: Read the integer entered by the user 
+        int n = scan.nextInt(); 
+ 
+        /* 
+         * Step 4: Apply an expression that follows PEMDAS 
+         * Expression used: 
+         * n + 10 * 2 - (n / 2) 
+         * 
+         * Order of evaluation: 
+         * 1. Parentheses: (n / 2) 
+         * 2. Multiplication: 10 * 2 
+         * 3. Addition: n + result 
+         * 4. Subtraction: final result 
+         */ 
+ 
+        int result = n + 10 * 2 - (n / 2); 
+ 
+        // Step 5: Display the expression and result 
+        System.out.println("\nPEMDAS Expression:"); 
+        System.out.println("n + 10 * 2 - (n / 2)"); 
+ 
+        System.out.println("\nStep-by-step Explanation:"); 
+        System.out.println("Parentheses  : (n / 2) = " + (n / 2)); 
+        System.out.println("Multiplication: 10 * 2 = " + (10*2)); 
+        System.out.println("Addition     : n + (10*2) = " + (n + (10*2))); 
+        System.out.println("Subtraction  : n + (10*2) - (n / 2) = " + (n + (10*2) - (n / 2))); 
+ 
+        // Step 6: Print final result 
+        System.out.println("\nFinal Result = " + result); 
+ 
+        // Step 7: Close Scanner object 
+        scan.close(); 
+    } 
+}
