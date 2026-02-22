@@ -1,0 +1,17 @@
+// Writing a program that performs Type Conversion and Type Casting for 'byte' & 'int'
+
+
+import java.util.Scanner; 
+public class ExplicitScanner { 
+    public static void main(String[] args) { 
+    Scanner scan = new Scanner(System.in); 
+        System.out.print("Enter the Integer number: "); 
+            int a = scan.nextInt(); 
+            byte b = (byte)a; 
+            System.out.println("Byte value range is from: -128 to +127 = 256"); 
+            System.out.println("Integer is " + a + " that converts in to Byte as " + a + " % 256 = " + 
+(a%256) + ", Modulus, which is remainder value"); 
+            System.out.println("So " + b + " is the answer, which the Remainder of " + a + " % 256"); 
+        scan.close(); 
+        } 
+    } 
