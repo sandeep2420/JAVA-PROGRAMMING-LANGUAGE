@@ -1,0 +1,62 @@
+/ Writing a program that performs "Squaring Operation" using Constructors.
+
+import java.util.Scanner; 
+// Scanner class is used to take input from the keyboard 
+ 
+// Class definition 
+class NumberDetails 
+{ 
+    // Instance variable (belongs to object) 
+    int num; 
+ 
+    /* 
+     * CONSTRUCTOR (Special Method) 
+     * - Same name as class (NumberDetails) 
+     * - No return type 
+     * - Automatically executed during object creation 
+     */ 
+    NumberDetails(int n) //3 
+    { 
+        // Initializing instance variable using constructor 
+        num = n; //4 
+ 
+        // Message to show constructor execution 
+        System.out.println("Constructor executed: Object initialized with value " + num); 
+    } 
+ 
+    // Method to find square of the number 
+    void showSquare() 
+    { 
+        int square = num * num; //5 
+        System.out.println("Square of " + num + " is: " + square); //6 
+    } 
+} 
+ 
+// Main class (Execution starts here) 
+class ConceptsOfConstructorsDemo 
+{ 
+    public static void main(String[] args) 
+    { 
+        // Creating Scanner object for input 
+        Scanner scan = new Scanner(System.in); 
+ 
+        // Prompting user for input 
+        System.out.print("Enter an integer number: "); 
+ 
+        // Reading integer input from user 
+        int value = scan.nextInt();//1 
+ 
+        /* 
+         * Object creation 
+         * new -> allocates memory in heap 
+         * Constructor NumberDetails(int) is called automatically 
+         */ 
+        NumberDetails obj = new NumberDetails(value); //2 
+ 
+        // Calling method using object reference 
+        obj.showSquare(); 
+ 
+        // Closing Scanner resource 
+        scan.close(); 
+    } 
+} 
