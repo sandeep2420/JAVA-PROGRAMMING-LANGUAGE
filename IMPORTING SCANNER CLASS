@@ -1,0 +1,56 @@
+//Writing a program to print "Name, Age, Student Status etc" by importing Scanner Class.
+
+import java.util.Scanner; //1 
+ 
+public class scan { 
+    public static void main(String[] args) { 
+ 
+        Scanner scan = new Scanner(System.in); //2 
+ 
+        // Header 
+        System.out.println("⭐ Welcome to Java Scanner ⭐"); 
+        System.out.println("--------------------------------"); 
+ 
+        // Inputs 
+        System.out.print("  Enter your name: "); 
+        String name = scan.nextLine(); //3 
+   // Declaration = Assigning /Initialization 
+ 
+        System.out.print("  Enter your age: "); 
+        int age = scan.nextInt(); 
+ 
+        System.out.print("  Are you a student? (true/false): "); 
+        boolean isStudent = scan.nextBoolean(); 
+ 
+        scan.nextLine(); // clear buffer 
+ 
+        System.out.print("  Enter your favourite hobby: "); 
+        String hobby = scan.nextLine(); 
+ 
+        System.out.print("  Enter your favourite movie: "); 
+        String movie = scan.nextLine(); 
+ 
+        System.out.print("  Enter your favourite programming language: "); 
+        String language = scan.nextLine(); 
+ 
+        System.out.print("  Enter your dream job: "); 
+        String dreamJob = scan.nextLine(); 
+ 
+        // Output Section 
+        System.out.println("\n✨✨ OUTPUT ✨✨"); 
+        System.out.println("--------------------------------"); 
+ 
+        System.out.println("Your name is : " + name); 
+        System.out.println("Your age is : " + age + " years"); 
+        System.out.println("Sftudent status is : " + (isStudent ? "Student" : "Not a 
+Student")); 
+        System.out.println("Your favourite hobby is : " + hobby); 
+        System.out.println("Your favourite movie is : " + movie); 
+        System.out.println("Your favourite programming language is : " + language); 
+        System.out.println("Your dream job is : " + dreamJob); 
+ 
+        System.out.println("\nThank you for using Scanner  "); 
+ 
+        scan.close(); 
+    } 
+} 
