@@ -1,0 +1,45 @@
+// Writing a program to print the user choice value at runtime using "This" Keyword.
+
+
+import java.util.Scanner; 
+ 
+class ThisKeyword { 
+ 
+    int number;   // Instance variable 
+ 
+    // Constructor with parameter 
+    ThisKeyword(int number) { 
+ 
+        // 'this.number' refers to instance variable 
+        // 'number' refers to local variable (parameter) 
+        this.number = number; 
+    } 
+ 
+    // Method to display value 
+    void display() { 
+ 
+        // Prints the instance variable value 
+        System.out.println("Value of number is: " + number); 
+    } 
+ 
+    public static void main(String[] args) { 
+ 
+        // Scanner object to take runtime input 
+        Scanner scan = new Scanner(System.in); 
+ 
+        // Asking user to enter a number 
+        System.out.print("Enter a number: "); 
+ 
+        // Reading integer input from user 
+        int n = scan.nextInt(); 
+ 
+        // Creating object and passing value to constructor 
+        ThisKeyword obj = new ThisKeyword(n); 
+ 
+        // Calling display method 
+        obj.display(); 
+ 
+        // Closing scanner 
+        scan.close(); 
+    } 
+} 
