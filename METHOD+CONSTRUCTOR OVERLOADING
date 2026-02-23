@@ -1,0 +1,82 @@
+// Writing a program to perform 'Sum of three integers' and 'Sum of two decimal numbers' using Method + Constructor Overloading with Runtime Input.
+
+   import java.util.Scanner; 
+ 
+class Overloading { 
+ 
+    int a, b, c; 
+ 
+    // ---------------- CONSTRUCTOR OVERLOADING ---------------- 
+ 
+    // Constructor with two parameters 
+    Overloading(int x, int y) { 
+        a = x; 
+        b = y; 
+        System.out.println("Constructor with 2 parameters called"); 
+    } 
+ 
+    // Constructor with three parameters 
+    Overloading(int x, int y, int z) { 
+        a = x; 
+        b = y; 
+        c = z; 
+        System.out.println("Constructor with 3 parameters called"); 
+    } 
+ 
+    // ---------------- METHOD OVERLOADING ---------------- 
+ 
+    // Method to add two integers 
+    int add(int x, int y) { 
+        return x + y; 
+    } 
+ 
+    // Method to add three integers 
+    int add(int x, int y, int z) { 
+        return x + y + z; 
+    } 
+ 
+    // Method to add two double values 
+    double add(double x, double y) { 
+        return x + y; 
+    } 
+ 
+    public static void main(String[] args) { 
+ 
+        Scanner scan = new Scanner(System.in); 
+ 
+        // Taking input for two integers 
+        System.out.print("Enter first integer: "); 
+        int n1 = scan.nextInt(); 
+ 
+        System.out.print("Enter second integer: "); 
+        int n2 = scan.nextInt(); 
+ 
+        // Creating object using 2-parameter constructor 
+        Overloading obj1 = new Overloading(n1, n2); 
+ 
+        // Calling overloaded add method (2 int) 
+        System.out.println("Sum of two integers = " + obj1.add(n1, n2)); 
+ 
+        // Taking input for third integer 
+        System.out.print("Enter third integer: "); 
+        int n3 = scan.nextInt(); 
+ 
+        // Creating object using 3-parameter constructor 
+        Overloading obj2 = new Overloading(n1, n2, n3); 
+ 
+        // Calling overloaded add method (3 int) 
+        System.out.println("Sum of three integers = " + obj2.add(n1, n2, n3)); 
+ 
+        // Taking input for double values 
+        System.out.print("Enter first decimal number: "); 
+        double d1 = scan.nextDouble(); 
+ 
+        System.out.print("Enter second decimal number: "); 
+        double d2 = scan.nextDouble(); 
+ 
+        // Calling overloaded add method (double) 
+        System.out.println("Sum of two decimal numbers = " + obj2.add(d1, d2)); 
+ 
+        scan.close(); 
+    } 
+} 
