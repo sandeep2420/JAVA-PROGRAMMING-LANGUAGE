@@ -1,0 +1,76 @@
+ //Writing a program to find a number whether it is Positive or Negative.
+
+import java.util.Scanner; 
+// Scanner class is used to read input from keyboard 
+ 
+// Class definition 
+class AccessControl 
+{ 
+    // PRIVATE data member 
+    // Cannot be accessed directly outside this class 
+    private int number; 
+ 
+    /* 
+     * PUBLIC method 
+     * Used to set value of private variable 
+     * This provides controlled access 
+     */ 
+    public void setNumber(int n) 
+    { 
+        number = n; 
+    } 
+ 
+    /* 
+     * PUBLIC method 
+     * Used to access private variable indirectly 
+     */ 
+    public void showNumberType() 
+    { 
+        if (number > 0) 
+        { 
+            System.out.println(number + " is a POSITIVE number"); 
+        } 
+        else if (number < 0) 
+        { 
+            System.out.println(number + " is a NEGATIVE number"); 
+        } 
+        else 
+        { 
+            System.out.println("The number is ZERO"); 
+        } 
+    } 
+} 
+ 
+// Main class 
+class ConceptsOfAccessControl 
+{ 
+    public static void main(String[] args) 
+    { 
+        // Creating Scanner object 
+        Scanner scan = new Scanner(System.in); 
+ 
+        // Asking user for input 
+        System.out.print("Enter an integer number: "); 
+ 
+        // Reading integer input 
+        int value = scan.nextInt(); 
+ 
+        /* 
+         * Creating object of AccessControl class 
+         * Memory allocated in heap 
+         */ 
+        AccessControl obj = new AccessControl(); 
+ 
+        /* 
+         * Accessing private data using public method 
+         * Direct access like obj.number is NOT allowed 
+         */ 
+        obj.setNumber(value); 
+ 
+        // Calling public method to display result 
+        obj.showNumberType(); 
+ 
+        // Closing Scanner 
+        scan.close(); 
+    } 
+} 
