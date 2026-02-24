@@ -1,0 +1,50 @@
+//PROGRAM WITH EXCEPTION HANDLING 
+
+import java.util.Scanner;   // Importing Scanner class to take input from user 
+ 
+class DivisionWithException {   // Class name 
+ 
+    public static void main(String[] args) {   // Main method - program execution starts here 
+ 
+        Scanner scan = new Scanner(System.in);  // Creating Scanner object to read input 
+ 
+        try {   // Start of try block - risky code is written here 
+ 
+            System.out.println("Enter numerator:");   // Asking user for first number 
+            int a = scan.nextInt();   // Reading integer input from user 
+ 
+            System.out.println("Enter denominator:");  // Asking user for second number 
+            int b = scan.nextInt();   // Reading second integer 
+ 
+            int result = a / b;   // Division operation (may cause ArithmeticException) 
+ 
+            System.out.println("Result = " + result);  // Printing result if no exception occurs 
+ 
+        } 
+ 
+        catch (ArithmeticException e) {   
+            // This block executes if division by zero happens 
+ 
+            System.out.println("Error: Division by zero is not allowed."); 
+ 
+            System.out.println("Exception Details: " + e);  
+            // e contains information about the error 
+        } 
+ 
+        catch (Exception e) { 
+            // This block handles any other unexpected exception 
+            // For example: entering characters instead of numbers 
+ 
+            System.out.println("Invalid input! Please enter only integers."); 
+        } 
+ 
+        finally { 
+            // This block always executes 
+            // Whether exception occurs or not 
+ 
+            System.out.println("Program executed successfully (Handled Safely)."); 
+        } 
+ 
+        scan.close();  // Closing Scanner object 
+    } 
+} 
