@@ -1,0 +1,85 @@
+//nested and inner classes
+import java.util.Scanner;   // Import Scanner class to take input from user
+
+// Outer class
+class BankAccount {
+
+    // Instance variables of outer class
+    String accountHolderName;   // Stores account holder name
+    double balance;             // Stores account balance
+
+    // Constructor to initialize account details
+    BankAccount(String name, double bal) {
+        accountHolderName = name;   // Assign given name to instance variable
+        balance = bal;              // Assign given balance to instance variable
+    }
+
+    // Method to display account details
+    void displayAccount() {
+        System.out.println("Account Holder: " + accountHolderName);
+        System.out.println("Balance: " + balance);
+    }
+
+    // ===============================
+    // Inner Class starts here
+    // ===============================
+
+    class InterestCalculator {
+
+        // Method to calculate interest
+        double calculateInterest(double rate) {
+            return (balance * rate) / 100;
+            // Accessing outer class variable "balance" directly
+        }
+
+        // Method to calculate total balance after adding interest
+        double calculateTotalBalance(double rate) {
+            double interest = calculateInterest(rate);  // First calculate interest
+            return balance + interest;                  // Add interest to original balance
+        }
+    }
+}
+
+
+// Main class
+public class nestedAndInnerClasses {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);   // Create Scanner object
+
+        // Taking input from user
+        System.out.print("Enter Account Holder Name: ");
+        String name = scan.nextLine();   // Read account holder name
+
+        System.out.print("Enter Account Balance: ");
+        double bal = scan.nextDouble();  // Read balance
+
+        System.out.print("Enter Interest Rate: ");
+        double rate = scan.nextDouble(); // Read interest rate
+
+        // Create object of outer class
+        BankAccount account = new BankAccount(name, bal);
+
+        // Display account details
+        account.displayAccount();
+
+        // Create object of inner class
+//OuterClassName.InnerClassName InnerClassObjectName = OuterClassObject.new InnerClassName();
+        BankAccount.InterestCalculator calculator = account.new InterestCalculator();
+
+        // Calculate interest
+        // InnerClassMethodReturnDataType VariableName  = InnerClassObjectName.InnerClassMethodName(Arguments)
+        double interest = calculator.calculateInterest(rate);
+
+        // Calculate total balance
+        // InnerClassMethodReturnDataType VariableName  = InnerClassObjectName.InnerClassMethodName(Arguments)
+        double totalBalance = calculator.calculateTotalBalance(rate);
+
+        // Display results
+        System.out.println("Interest Amount: " + interest);
+        System.out.println("Total Balance (Balance + Interest): " + totalBalance);
+
+        scan.close();  // Close scanner
+    }
+}
