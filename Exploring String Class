@@ -1,0 +1,101 @@
+import java.util.Scanner;
+// import → keyword used to include built-in classes
+// java.util → package name (collection of related classes)
+// Scanner → class used for taking user input
+
+class ExploringStringClass
+// class → keyword used to define a class
+// ExploringStringClass → class name (User defined)
+
+{
+    public static void main(String[] args)
+    // public → accessible everywhere
+    // static → belongs to class, not object
+    // void → returns nothing
+    // main → starting point of program
+    // String[] → array of String objects
+    // args → argument name
+    {
+
+        Scanner scan = new Scanner(System.in);
+        // Scanner → class
+        // scan → object reference variable
+        // new → keyword used to create object
+        // System.in → standard input (keyboard)
+
+        System.out.println("Enter any text:");
+        // System → predefined class
+        // out → output stream object
+        // println → method to print line
+
+        String text = scan.nextLine();
+        // String → class type
+        // text → variable name
+        // = → assignment operator
+        // scan.nextLine() → method to read full line input
+
+        System.out.println("\nYou entered: " + text);
+
+        // length()
+        System.out.println("Length of text: " + text.length());
+        // length() → returns number of characters
+
+        // toUpperCase()
+        System.out.println("Uppercase: " + text.toUpperCase());
+        // Converts entire string into uppercase
+
+        // toLowerCase()
+        System.out.println("Lowercase: " + text.toLowerCase());
+        // Converts entire string into lowercase
+
+        // charAt()
+        if(text.length() > 0)
+        {
+            System.out.println("First character: " + text.charAt(0));
+            // charAt(0) → returns first character
+        }
+
+        // substring()
+        if(text.length() >= 3)
+        {
+            System.out.println("First 3 characters: " + text.substring(0,3));
+            // substring(start, end)
+            // Extracts characters from index 0 to 2
+        }
+
+        // contains()
+        System.out.println("Contains 'java'? " + text.toLowerCase().contains("java"));
+        // contains() → checks if word present
+        // converting to lowercase to avoid case problem
+
+        // replace()
+        System.out.println("Replace space with '': " + text.replace(" ", ""));
+        // replace(old, new)
+
+        // equals()
+        if(text.equals("Java"))
+        {
+            System.out.println("Exactly equal to 'Java'");
+        }
+        else
+        {
+            System.out.println("Not exactly equal to 'Java'");
+        }
+
+        scan.close();
+        // close() → closes Scanner object
+    }
+}
+/*Output:
+Enter any text:
+I love Java programming
+
+You entered: I love Java programming
+Length of text: 23
+Uppercase: I LOVE JAVA PROGRAMMING
+Lowercase: i love java programming
+First character: I
+First 3 characters: I l
+Contains 'java'? true
+Replace space with '*': I*love*Java*programming
+Not exactly equal to 'Java'*/
