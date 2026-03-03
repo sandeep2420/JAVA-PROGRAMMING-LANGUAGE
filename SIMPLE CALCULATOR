@@ -1,0 +1,158 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleCalculator extends JFrame implements ActionListener {
+
+    private JTextField display;
+    private String expression = "";
+    private boolean resultShown = false;
+
+    public SimpleCalculator() {
+
+        setTitle("Simple Calculator");
+        setSize(350, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Display Field
+        display = new JTextField();
+        display.setFont(new Font("Arial", Font.BOLD, 26));
+        display.setEditable(false);
+        add(display, BorderLayout.NORTH);
+
+        // Panel with Grid Layout
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 4, 5, 5));
+
+        String[] buttons = {
+                "7", "8", "9", "/",
+                "4", "5", "6", "*",
+                "1", "2", "3", "-",
+                "0", ".", "%", "+",
+                "\u232B", "C", "=", ""
+        };
+
+        for (String text : buttons) {
+
+            if (text.equals("")) {
+                panel.add(new JLabel());
+                continue;
+            }
+
+            JButton btn = new JButton(text);
+
+            // Proper font for backspace symbol
+            if (text.equals("\u232B")) {
+                btn.setFont(new Font("Segoe UI Symbol", Font.BOLD, 22));
+            } else {
+                btn.setFont(new Font("Arial", Font.BOLD, 20));
+            }
+
+            btn.addActionListener(this);
+            panel.add(btn);
+        }
+
+        add(panel, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        String command = e.getActionCommand();
+
+        try {
+
+            // Auto clear after result when new input starts
+            if (resultShown && !command.equals("=")) {
+                expression = "";
+                display.setText("");
+                resultShown = false;
+            }
+
+            // Numbers, decimal and operators
+            if ("0123456789.".contains(command) ||
+                    "+-*/%".contains(command)) {
+
+                expression += command;
+                display.setText(expression);
+            }
+
+            // Backspace
+            else if (command.equals("\u232B")) {
+
+                if (!expression.isEmpty()) {
+                    expression = expression.substring(0, expression.length() - 1);
+                    display.setText(expression);
+                }
+            }
+
+            // Clear
+            else if (command.equals("C")) {
+                expression = "";
+                display.setText("");
+            }
+
+            // Equal
+            else if (command.equals("=")) {
+
+                String result = evaluate(expression);
+                expression = expression + "=" + result;
+                display.setText(expression);
+                resultShown = true;
+            }
+
+        } catch (ArithmeticException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            expression = "";
+            display.setText("");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Invalid Expression", "Error", JOptionPane.ERROR_MESSAGE);
+            expression = "";
+            display.setText("");
+        }
+    }
+
+    private String evaluate(String exp) {
+
+        char operator = ' ';
+        int index = -1;
+
+        for (int i = 0; i < exp.length(); i++) {
+            if ("+-*/%".indexOf(exp.charAt(i)) != -1) {
+                operator = exp.charAt(i);
+                index = i;
+                break;
+            }
+        }
+
+        double num1 = Double.parseDouble(exp.substring(0, index));
+        double num2 = Double.parseDouble(exp.substring(index + 1));
+        double result = 0;
+
+        switch (operator) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/':
+                if (num2 == 0) throw new ArithmeticException("Cannot divide by zero");
+                result = num1 / num2;
+                break;
+            case '%':
+                if (num2 == 0) throw new ArithmeticException("Cannot mod by zero");
+                result = num1 % num2;
+                break;
+        }
+
+        // If result is integer → remove .0
+        if (result == (long) result) {
+            return String.valueOf((long) result);
+        } else {
+            return String.valueOf(result);
+        }
+    }
+
+    public static void main(String[] args) {
+        new SimpleCalculator();
+    }
+}
