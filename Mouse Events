@@ -1,0 +1,91 @@
+//File Name: MouseEvent.java 
+import java.awt.*; 
+import java.awt.event.*; 
+ 
+public class MouseEvent extends Frame { 
+ 
+    private String message = "No Mouse Event"; 
+    private Panel panel; 
+    private boolean justEntered = false; 
+ 
+    public MouseEvent() { 
+ 
+        setTitle("Mouse Event"); 
+        setSize(500, 400); 
+        setLayout(new BorderLayout()); 
+ 
+        panel = new Panel() { 
+            public void paint(Graphics g) { 
+ 
+                g.setFont(new Font("Arial", Font.BOLD, 24)); 
+                FontMetrics fm = g.getFontMetrics(); 
+                int x = (getWidth() - fm.stringWidth(message)) / 2; 
+                int y = getHeight() / 2; 
+ 
+                g.drawString(message, x, y); 
+            } 
+        }; 
+ 
+        panel.setBackground(Color.WHITE); 
+        add(panel, BorderLayout.CENTER); 
+ 
+        addWindowListener(new WindowAdapter() { 
+            public void windowClosing(WindowEvent e) { 
+                dispose(); 
+            } 
+        }); 
+ 
+        panel.addMouseListener(new MouseAdapter() { 
+ 
+            public void mouseEntered(java.awt.event.MouseEvent e) { 
+                message = "Mouse Entered"; 
+                justEntered = true;   // mark that we just entered 
+                panel.repaint(); 
+            } 
+ 
+            public void mouseExited(java.awt.event.MouseEvent e) { 
+                message = "Mouse Exited"; 
+                panel.repaint(); 
+            } 
+ 
+            public void mouseClicked(java.awt.event.MouseEvent e) { 
+                message = "Mouse Clicked"; 
+                panel.repaint(); 
+            } 
+ 
+            public void mousePressed(java.awt.event.MouseEvent e) { 
+                message = "Mouse Pressed"; 
+                panel.repaint(); 
+            } 
+ 
+            public void mouseReleased(java.awt.event.MouseEvent e) { 
+                message = "Mouse Released"; 
+                panel.repaint(); 
+            } 
+        }); 
+ 
+        panel.addMouseMotionListener(new MouseMotionAdapter() { 
+ 
+            public void mouseMoved(java.awt.event.MouseEvent e) { 
+ 
+                // Skip first move event after entering 
+                if (justEntered) { 
+                    justEntered = false; 
+                    return; 
+                } 
+ 
+                message = "Mouse Moved"; 
+                panel.repaint(); 
+            } 
+ 
+            public void mouseDragged(java.awt.event.MouseEvent e) { 
+                message = "Mouse Dragged"; 
+                panel.repaint(); 
+            } 
+        });  
+setVisible(true); 
+    } 
+public static void main(String[] args) { 
+new MouseEvent(); 
+    } 
+}
