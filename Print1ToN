@@ -1,0 +1,74 @@
+import java.util.Scanner;  // Import Scanner to take input from user
+
+public class Print1ToN {
+
+    // Recursive method to print numbers from 1 to n
+    static void printNumbers(int n) {
+
+        // -------- BASE CASE --------
+        // If n becomes 0, stop recursion
+        if (n == 0) {
+            return;   // Stops further method calls
+            /*return; does NOT mean: “Exit the if block.”
+return; means: “Exit the entire method immediately.”
+if n == 0 is true:
+The method stops right there in stack with the top frame (n=0) and comes out from stack.
+The method ends completely. Think of it like emergency exit.
+JVM does NOT move to: printNumbers(n - 1); and lands on next line 'System.out.println(n);'
+It exits the entire method immediately.
+The stack frame n=0 is removed / popped at the top of stack and executes the next printNumbers(1)
+Here execution means ''System.out.println(n);'' printing 1
+
+JVM does NOT:
+Continue to next line
+Execute remaining code
+Re-enter the recursive call
+It immediately:
+Destroys the current stack frame n=0
+Returns control to the previous caller n=1*/
+        }
+
+        // -------- RECURSIVE CALL --------
+        // First call the same method with (n-1)
+        // This goes deeper until n becomes 0
+        printNumbers(n - 1); //this is a Method call with in 'printNumbers(int n)' this Method call
+
+        // -------- PRINT STATEMENT --------
+        // This executes while returning from recursion
+        // Printing only happens during the returning phase of previous stack frames.
+        // Now printNumbers(1) is at the top of the stacks popped out and 1 prints/displays
+        System.out.println(n);
+        /*After finishing printNumbers(1): Its frame pops from stack.
+Now JVM lands inside printNumbers(2) at: System.out.println(2); where and 2 prints/displays*/
+    }
+
+    // Main method - program execution starts here
+    public static void main(String[] args) {
+
+        // Create Scanner object
+        Scanner scan = new Scanner(System.in);
+
+        // Ask user to enter a number
+        System.out.print("Enter a number: ");
+
+        // Read input from user
+        int number = scan.nextInt();
+
+        // If number is negative
+        if (number <= 0) {
+            System.out.println("Please enter a positive number.");
+        } else {
+
+            // Call recursive function
+            printNumbers(number);
+        }
+
+        // Close scanner
+        scan.close();
+    }
+}
+/*Output:
+ Enter a number: 3
+1
+2
+3 */
