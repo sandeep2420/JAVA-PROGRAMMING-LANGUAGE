@@ -1,0 +1,89 @@
+
+import java.util.Scanner;   // Import Scanner class for user input
+// Parent Class
+// Abstract class (cannot be instantiated directly)
+abstract class ElectricityConnection
+{
+    protected int units;      // Protected instance variable accessible to subclass
+
+    // Constructor of parent class
+    ElectricityConnection(int units)
+    {
+        this.units = units;   // Assigning input units to instance variable
+    }
+
+    // Abstract method (no body)
+    abstract double calculateBill();
+
+    // Normal method
+    void displayConnection()
+    {
+        System.out.println("Electricity Connection");
+    }
+
+    // final method (cannot be overridden by child class)
+    final void rules()
+    {
+        System.out.println("Government electricity rules applied.");
+    }
+}
+
+// Subclass inheriting from ElectricityConnection
+class DomesticConnection extends ElectricityConnection
+{
+
+    // Constructor of subclass
+    DomesticConnection(int units)
+    {
+        super(units);  // Calling parent constructor
+    }
+
+    // Overriding abstract method
+    @Override
+    double calculateBill()
+    {
+        return units * 5.5;   // Bill calculation
+    }
+
+    // Overriding parent method
+    @Override
+    void displayConnection()
+    {
+        System.out.println("Domestic Electricity Connection");
+    }
+}
+
+// Main class
+public class ElectricityBillSystem
+{
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in); // Scanner object
+
+        System.out.println("Enter consumed electricity units:");
+        int units = scan.nextInt();  // Taking user input
+
+        // Base class reference variable (polymorphism)
+        ElectricityConnection obj;
+
+        // Creating subclass object
+        obj = new DomesticConnection(units);
+
+        // Calling overridden method
+        obj.displayConnection();
+
+        // Calling abstract implemented method
+        double bill = obj.calculateBill();
+
+        // Display result
+        System.out.println("Total Bill = " + bill);
+
+        // Calling final method
+        obj.rules();
+
+        // Using Object class method
+        System.out.println("Class Name: " + obj.getClass());
+
+        scan.close(); // Closing scanner
+    }
+}
